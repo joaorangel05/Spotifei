@@ -27,46 +27,46 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_spotifei = new javax.swing.JLabel();
-        lbl_usuario = new javax.swing.JLabel();
-        lbl_senha = new javax.swing.JLabel();
-        txt_usuario = new javax.swing.JTextField();
-        txt_senha = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        lbl_usuariologin = new javax.swing.JLabel();
+        lbl_senhalogin = new javax.swing.JLabel();
+        txt_usuariologin = new javax.swing.JTextField();
+        txt_senhalogin = new javax.swing.JTextField();
+        bt_login = new javax.swing.JButton();
+        bt_cadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl_spotifei.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_spotifei.setText("SPOTIFEI");
 
-        lbl_usuario.setText("Usuario:");
+        lbl_usuariologin.setText("Usuario:");
 
-        lbl_senha.setText("Senha:");
+        lbl_senhalogin.setText("Senha:");
 
-        txt_usuario.setToolTipText("");
-        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
+        txt_usuariologin.setToolTipText("");
+        txt_usuariologin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usuarioActionPerformed(evt);
+                txt_usuariologinActionPerformed(evt);
             }
         });
 
-        txt_senha.addActionListener(new java.awt.event.ActionListener() {
+        txt_senhalogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_senhaActionPerformed(evt);
+                txt_senhaloginActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bt_login.setText("Login");
+        bt_login.setToolTipText("");
+        bt_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_loginActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Cadastro");
+        bt_cadastro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bt_cadastro.setText("Cadastro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,16 +80,16 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_senha)
-                            .addComponent(lbl_usuario))
+                            .addComponent(lbl_senhalogin)
+                            .addComponent(lbl_usuariologin))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(bt_login)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                                .addComponent(jButton2))
-                            .addComponent(txt_usuario)
-                            .addComponent(txt_senha))))
+                                .addComponent(bt_cadastro))
+                            .addComponent(txt_usuariologin)
+                            .addComponent(txt_senhalogin))))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,33 +99,33 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(lbl_spotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_usuario)
-                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_usuariologin)
+                    .addComponent(txt_usuariologin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_senha)
-                    .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_senhalogin)
+                    .addComponent(txt_senhalogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(bt_login)
+                    .addComponent(bt_cadastro))
                 .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
+    private void txt_senhaloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaloginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_senhaActionPerformed
+    }//GEN-LAST:event_txt_senhaloginActionPerformed
 
-    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
+    private void txt_usuariologinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuariologinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_usuarioActionPerformed
+    }//GEN-LAST:event_txt_usuariologinActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bt_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,12 +164,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel lbl_senha;
+    private javax.swing.JButton bt_cadastro;
+    private javax.swing.JButton bt_login;
+    private javax.swing.JLabel lbl_senhalogin;
     private javax.swing.JLabel lbl_spotifei;
-    private javax.swing.JLabel lbl_usuario;
-    private javax.swing.JTextField txt_senha;
-    private javax.swing.JTextField txt_usuario;
+    private javax.swing.JLabel lbl_usuariologin;
+    private javax.swing.JTextField txt_senhalogin;
+    private javax.swing.JTextField txt_usuariologin;
     // End of variables declaration//GEN-END:variables
 }
