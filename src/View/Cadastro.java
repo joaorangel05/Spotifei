@@ -6,6 +6,7 @@ package View;
 
 import Controller.ControllerCadastro;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -73,6 +74,7 @@ public class Cadastro extends javax.swing.JFrame {
         txt_senha_cadastro = new javax.swing.JTextField();
         txt_nome_cadastro = new javax.swing.JTextField();
         bt_cadastrar = new javax.swing.JButton();
+        voltar_cadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +102,15 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
 
+        voltar_cadastro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        voltar_cadastro.setText("Voltar");
+        voltar_cadastro.setActionCommand("Voltar");
+        voltar_cadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltar_cadastroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,13 +127,14 @@ public class Cadastro extends javax.swing.JFrame {
                             .addComponent(lbl_nome)
                             .addComponent(lbl_senhacadastro))
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_usuario_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_nome_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_senha_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(bt_cadastrar)))
+                            .addComponent(txt_senha_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bt_cadastrar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(voltar_cadastro)))))
                 .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -143,7 +155,9 @@ public class Cadastro extends javax.swing.JFrame {
                     .addComponent(lbl_senhacadastro)
                     .addComponent(txt_senha_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(bt_cadastrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_cadastrar)
+                    .addComponent(voltar_cadastro))
                 .addGap(23, 23, 23))
         );
 
@@ -151,12 +165,18 @@ public class Cadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_usuario_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuario_cadastroActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txt_usuario_cadastroActionPerformed
 
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
-        // TODO add your handling code here:
+        c.salvarUsuario();
     }//GEN-LAST:event_bt_cadastrarActionPerformed
+
+    private void voltar_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltar_cadastroActionPerformed
+        Login c = new Login();
+        c.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_voltar_cadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,5 +223,6 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nome_cadastro;
     private javax.swing.JTextField txt_senha_cadastro;
     private javax.swing.JTextField txt_usuario_cadastro;
+    private javax.swing.JButton voltar_cadastro;
     // End of variables declaration//GEN-END:variables
 }
