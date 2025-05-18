@@ -26,21 +26,67 @@ public class Musicas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        bt_playlists = new javax.swing.JButton();
+        bt_curtidas = new javax.swing.JButton();
+        bt_pesquisar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Musicas");
+
+        bt_playlists.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bt_playlists.setText("Suas Playlists");
+
+        bt_curtidas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bt_curtidas.setText("Musicas Curtidas");
+        bt_curtidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_curtidasActionPerformed(evt);
+            }
+        });
+
+        bt_pesquisar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bt_pesquisar.setText("Pesquisar Musicas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bt_pesquisar)
+                            .addComponent(bt_curtidas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_playlists, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addGap(43, 43, 43)
+                .addComponent(bt_playlists)
+                .addGap(27, 27, 27)
+                .addComponent(bt_curtidas)
+                .addGap(27, 27, 27)
+                .addComponent(bt_pesquisar)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_curtidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_curtidasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_curtidasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +124,9 @@ public class Musicas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_curtidas;
+    private javax.swing.JButton bt_pesquisar;
+    private javax.swing.JButton bt_playlists;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
