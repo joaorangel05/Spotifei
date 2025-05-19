@@ -18,7 +18,7 @@ public class ControllerLogin {
         this.view = view;
     }
     
-    public void loginUsuario(){
+    public boolean loginUsuario(){
         Usuario usuario = new Usuario(null, 
                                 view.getTxt_usuario_login().getText(),
                                 view.getTxt_senha_login().getText());
@@ -32,17 +32,20 @@ public class ControllerLogin {
                                               "Login efetuado!", 
                                               "Aviso",
                                               JOptionPane.INFORMATION_MESSAGE);
+                return true;
             } else{
                 JOptionPane.showMessageDialog(view, 
                                               "Login NÃO efetuado!", 
                                               "Aviso",
                                               JOptionPane.ERROR_MESSAGE);
+                return false;
             }
         } catch(SQLException e){    
             JOptionPane.showMessageDialog(view, 
                                               "Erro de conexão!", 
                                               "Aviso",
                                               JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 }

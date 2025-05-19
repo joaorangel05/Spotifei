@@ -16,7 +16,7 @@ public class UsuarioDAO {
     }
     
     public ResultSet consultar(Usuario usuario) throws SQLException{
-        String sql = "SELECT * FROM usuario WHERE usuario = ? AND senha = ?";
+        String sql = "SELECT * FROM rangel WHERE usuario = ? AND senha = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, usuario.getUsuario());
         statement.setString(2, usuario.getSenha());
@@ -26,7 +26,7 @@ public class UsuarioDAO {
     }
     
     public void inserir(Usuario usuario) throws SQLException{
-        String sql = "INSERT INTO pessoa (nome, usuario, senha) values ('"
+        String sql = "INSERT INTO rangel (nome, usuario, senha) values ('"
                       + usuario.getNome()    + "', '"
                       + usuario.getUsuario() + "', '"
                       + usuario.getSenha()   + "')";

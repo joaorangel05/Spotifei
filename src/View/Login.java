@@ -169,7 +169,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usuario_loginActionPerformed
 
     private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
-        // TODO add your handling code here:
+        if(c.loginUsuario()){
+        Musicas c = new Musicas();
+        c.setVisible(true);
+        this.setVisible(false);
+        }
     }//GEN-LAST:event_bt_loginActionPerformed
 
     private void bt_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastroActionPerformed
