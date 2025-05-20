@@ -4,6 +4,7 @@ package Model;
 
 public class ModelMusica {
     private String nome, artista, genero;
+    private boolean curtida;
 
     public ModelMusica() {
     }
@@ -12,6 +13,7 @@ public class ModelMusica {
         this.nome = nome;
         this.artista = artista;
         this.genero = genero;
+        this.curtida = false;
     }
 
     public String getNome() {
@@ -38,7 +40,13 @@ public class ModelMusica {
         this.genero = genero;
     }
     
-    
+     public boolean isCurtida() {
+        return curtida;
+    }
+
+    public void setCurtida(boolean curtida) {
+        this.curtida = curtida;
+    }
     
 }
 

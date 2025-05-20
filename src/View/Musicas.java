@@ -72,13 +72,13 @@ public class Musicas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addGap(32, 32, 32)
                 .addComponent(bt_playlists)
-                .addGap(27, 27, 27)
+                .addGap(33, 33, 33)
                 .addComponent(bt_curtidas)
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addComponent(bt_pesquisar)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
