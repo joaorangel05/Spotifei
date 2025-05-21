@@ -1,149 +1,157 @@
 
 package View;
-
 import Controller.ControllerMusica;
-import Controller.ControllerPlaylist;
-import Model.ModelMusica;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
-public class PesquisarMusica extends JFrame {
 
-    private ControllerMusica controllerMusica;
-    private ControllerPlaylist controllerPlaylist;
+public class PesquisarMusica extends javax.swing.JFrame {
 
-    private JComboBox<String> cmbTipoBusca;
-    private JTextField txtBusca;
-    private JButton btnBuscar;
-    private JButton btnCurtir;
-    private JButton btnPlaylist;
-    private JTable tabela;
-
+    Controller.ControllerMusica controller = new Controller.ControllerMusica();
+    /**
+     * Creates new form PesquisarMusica
+     */
     public PesquisarMusica() {
-        controllerMusica = new ControllerMusica();
-        controllerPlaylist = new ControllerPlaylist("Curtidas");
-
-        initComponents();
-        atualizarTabela(controllerMusica.getTodasMusicas());
+        initComponents();   
     }
+private void buscarMusicas() {
+        String termo = tf_pesquisa.getText();
+        List<Model.ModelMusica> lista = controller.buscarMusicas(termo);
 
-    private void initComponents() {
-        setTitle("Pesquisar Músicas");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(720, 400);
-        setLocationRelativeTo(null);
-        setLayout(null);
+        String[] colunas = {"Nome", "Artista", "Gênero"};
+        String[][] dados = new String[lista.size()][3];
 
-        JLabel lblBusca = new JLabel("Buscar por:");
-        lblBusca.setBounds(20, 20, 80, 25);
-        add(lblBusca);
-
-        cmbTipoBusca = new JComboBox<>(new String[]{"Nome", "Artista", "Gênero"});
-        cmbTipoBusca.setBounds(100, 20, 100, 25);
-        add(cmbTipoBusca);
-
-        txtBusca = new JTextField();
-        txtBusca.setBounds(210, 20, 200, 25);
-        add(txtBusca);
-
-        btnBuscar = new JButton("Buscar");
-        btnBuscar.setBounds(420, 20, 100, 25);
-        add(btnBuscar);
-
-        btnCurtir = new JButton("Curtir/Descurtir");
-        btnCurtir.setBounds(530, 20, 140, 25);
-        add(btnCurtir);
-
-        btnPlaylist = new JButton("Ver Playlist");
-        btnPlaylist.setBounds(530, 60, 140, 25);
-        add(btnPlaylist);
-
-        tabela = new JTable();
-        tabela.setModel(new DefaultTableModel(
-                new Object[][]{},
-                new String[]{"Nome", "Artista", "Gênero", "Curtida"}
-        ));
-        JScrollPane scrollPane = new JScrollPane(tabela);
-        scrollPane.setBounds(20, 100, 650, 240);
-        add(scrollPane);
-
-        // Ações dos botões
-        btnBuscar.addActionListener(e -> {
-            String termo = txtBusca.getText().trim();
-            String tipo = (String) cmbTipoBusca.getSelectedItem();
-
-            List<ModelMusica> resultado;
-            if ("Nome".equals(tipo)) {
-                resultado = controllerMusica.buscarPorNome(termo);
-            } else if ("Artista".equals(tipo)) {
-                resultado = controllerMusica.buscarPorArtista(termo);
-            } else {
-                resultado = controllerMusica.buscarPorGenero(termo);
-            }
-
-            atualizarTabela(resultado);
-        });
-
-        btnCurtir.addActionListener(e -> {
-            int linha = tabela.getSelectedRow();
-            if (linha >= 0) {
-                String nomeMusica = (String) tabela.getValueAt(linha, 0);
-                controllerMusica.alternarCurtida(nomeMusica);
-                atualizarTabela(controllerMusica.getTodasMusicas());
-            } else {
-                JOptionPane.showMessageDialog(this, "Selecione uma música para curtir ou descurtir.");
-            }
-        });
-
-        btnPlaylist.addActionListener(e -> {
-            controllerPlaylist.atualizarPlaylist(controllerMusica.getTodasMusicas());
-            List<ModelMusica> playlist = controllerPlaylist.getPlaylist().getMusicas();
-            atualizarTabela(playlist);
-        });
-    }
-
-    private void atualizarTabela(List<ModelMusica> musicas) {
-        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
-        modelo.setRowCount(0);
-
-        for (ModelMusica m : musicas) {
-            modelo.addRow(new Object[]{
-                    m.getNome(),
-                    m.getArtista(),
-                    m.getGenero(),
-                    m.isCurtida() ? "Sim" : "Não"
-            });
+        for (int i = 0; i < lista.size(); i++) {
+            Model.ModelMusica m = lista.get(i);
+            dados[i][0] = m.getNome();
+            dados[i][1] = m.getArtista();
+            dados[i][2] = m.getGenero();
         }
+
+        tabela_pesquisa.setModel(new javax.swing.table.DefaultTableModel(
+            dados,
+            colunas
+        ));
+    }
+    public ControllerMusica getC() {
+        return c;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new PesquisarMusica().setVisible(true);
-        });
+    public void setC(ControllerMusica c) {
+        this.c = c;
     }
-}
 
+    public JButton getBuscar_pesquisar() {
+        return bt_buscar;
+    }
+
+    public void setBuscar_pesquisar(JButton buscar_pesquisar) {
+        this.bt_buscar = buscar_pesquisar;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTable getTabela_pesquisa() {
+        return tabela_pesquisa;
+    }
+
+    public void setTabela_pesquisa(JTable tabela_pesquisa) {
+        this.tabela_pesquisa = tabela_pesquisa;
+    }
+
+    public JTextField getTf_pesquisa() {
+        return tf_pesquisa;
+    }
+
+    public void setTf_pesquisa(JTextField tf_pesquisa) {
+        this.tf_pesquisa = tf_pesquisa;
+    }
+    
+    
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tf_pesquisa = new javax.swing.JTextField();
+        bt_buscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela_pesquisa = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tf_pesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_pesquisaActionPerformed(evt);
+            }
+        });
+
+        bt_buscar.setText("Buscar");
+
+        tabela_pesquisa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "Artista", "Gênero"
+            }
+        ));
+        jScrollPane1.setViewportView(tabela_pesquisa);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_pesquisa)
+                            .addComponent(bt_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 158, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(tf_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_buscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tf_pesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_pesquisaActionPerformed
+        
+    }//GEN-LAST:event_tf_pesquisaActionPerformed
+    private void bt_buscarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        buscarMusicas();
+    }                                           
     /**
      * @param args the command line arguments
      */
@@ -178,7 +186,13 @@ public class PesquisarMusica extends JFrame {
             }
         });
     }
-
+    private ControllerMusica c;
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_buscar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabela_pesquisa;
+    private javax.swing.JTextField tf_pesquisa;
     // End of variables declaration//GEN-END:variables
 }

@@ -83,11 +83,15 @@ public class Musicas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     
     private void bt_curtidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_curtidasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_curtidasActionPerformed
-
+    private void bt_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        PesquisarMusica c = new PesquisarMusica();
+        c.setVisible(true);
+        this.setVisible(false);
+    }         
     /**
      * @param args the command line arguments
      */
