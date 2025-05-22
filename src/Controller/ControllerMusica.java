@@ -15,4 +15,12 @@ public class ControllerMusica {
     public List<ModelMusica> buscarMusicas(String termo) {
         return musicaDAO.buscarPorTermo(termo);
     }
+    
+    // dentro do seu ControllerMusica
+
+
+public void atualizarCurtida(String nomeMusica, boolean curtida) {
+    musicaDAO.atualizarCurtida(nomeMusica, curtida);  // chama pelo objeto
+}
+
 }

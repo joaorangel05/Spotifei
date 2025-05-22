@@ -45,4 +45,16 @@ public class MusicaDAO {
 
         return resultados;
     }
+    
+    public void atualizarCurtida(String nomeMusica, boolean curtida) {
+        String sql = "UPDATE musica SET curtida = ? WHERE nome = ?";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setBoolean(1, curtida);
+        stmt.setString(2, nomeMusica);
+        stmt.executeUpdate();
+    } catch (SQLException e) {
+        System.out.println("Erro ao atualizar curtida: " + e.getMessage());
+    }
+}
 }

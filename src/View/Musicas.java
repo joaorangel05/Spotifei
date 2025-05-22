@@ -49,6 +49,11 @@ public class Musicas extends javax.swing.JFrame {
 
         bt_pesquisar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bt_pesquisar.setText("Pesquisar Musicas");
+        bt_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_pesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,11 +92,13 @@ public class Musicas extends javax.swing.JFrame {
     private void bt_curtidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_curtidasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_curtidasActionPerformed
-    private void bt_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        PesquisarMusica c = new PesquisarMusica();
+
+    private void bt_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_pesquisarActionPerformed
+      PesquisarMusica c = new PesquisarMusica();
         c.setVisible(true);
         this.setVisible(false);
-    }         
+    }//GEN-LAST:event_bt_pesquisarActionPerformed
+
     /**
      * @param args the command line arguments
      */
