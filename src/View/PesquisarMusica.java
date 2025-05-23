@@ -27,20 +27,24 @@ public class PesquisarMusica extends javax.swing.JFrame {
         String termo = tf_pesquisa.getText();
         List<ModelMusica> lista = controller.buscarMusicas(termo);
 
+        for (ModelMusica m : lista) {
+        controller.salvarHistorico(m);
+}
+        
         String[] colunas = {"Nome", "Artista", "Gênero", "Curtida"};
 
         DefaultTableModel modelo = new DefaultTableModel(colunas, 0) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 if (columnIndex == 3) {
-                    return Boolean.class; // Checkbox na coluna Curtida
+                    return Boolean.class; 
                 }
                 return String.class;
             }
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column == 3; // Só coluna Curtida editável
+                return column == 3; 
             }
         };
 
@@ -64,6 +68,8 @@ public class PesquisarMusica extends javax.swing.JFrame {
                 controller.atualizarCurtida(nomeMusica, curtida);
             }
         });
+        
+        
     }
 
     public ControllerMusica getController() {
@@ -139,7 +145,58 @@ public class PesquisarMusica extends javax.swing.JFrame {
         this.tf_pesquisa = tf_pesquisa;
     }
 
-  
+    public JButton getVisualizar_curtidas() {
+        return visualizar_curtidas;
+    }
+
+    public void setVisualizar_curtidas(JButton visualizar_curtidas) {
+        this.visualizar_curtidas = visualizar_curtidas;
+    }
+
+    
+
+  private void mostrarPlaylistCurtidas() {
+    List<ModelMusica> lista = controller.buscarCurtidas();
+
+    String[] colunas = {"Nome", "Artista", "Gênero", "Curtida"};
+
+    DefaultTableModel modelo = new DefaultTableModel(colunas, 0) {
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            if (columnIndex == 3) {
+                return Boolean.class;
+            }
+            return String.class;
+        }
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return column == 3; // Permite editar só a coluna Curtida
+        }
+    };
+
+    for (ModelMusica m : lista) {
+        Object[] linha = {
+            m.getNome(),
+            m.getArtista(),
+            m.getGenero(),
+            m.isCurtida()
+        };
+        modelo.addRow(linha);
+    }
+
+    tabela_pesquisa.setModel(modelo);
+
+    modelo.addTableModelListener(e -> {
+        if (e.getType() == TableModelEvent.UPDATE && e.getColumn() == 3) {
+            int row = e.getFirstRow();
+            String nomeMusica = (String) modelo.getValueAt(row, 0);
+            Boolean curtida = (Boolean) modelo.getValueAt(row, 3);
+            controller.atualizarCurtida(nomeMusica, curtida);
+        }
+    });
+}
+
     
     
 
@@ -156,6 +213,7 @@ public class PesquisarMusica extends javax.swing.JFrame {
         bt_buscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela_pesquisa = new javax.swing.JTable();
+        visualizar_curtidas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -193,29 +251,45 @@ public class PesquisarMusica extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabela_pesquisa);
 
+        visualizar_curtidas.setText("Visualizar Músicas Curtidas");
+        visualizar_curtidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualizar_curtidasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tf_pesquisa)
-                    .addComponent(bt_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
-                .addContainerGap(107, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(tf_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(visualizar_curtidas)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(tf_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bt_buscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_buscar))
+                .addGap(11, 11, 11)
+                .addComponent(visualizar_curtidas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -230,6 +304,10 @@ public class PesquisarMusica extends javax.swing.JFrame {
     private void bt_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarActionPerformed
         buscarMusicas();
     }//GEN-LAST:event_bt_buscarActionPerformed
+
+    private void visualizar_curtidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizar_curtidasActionPerformed
+        mostrarPlaylistCurtidas();
+    }//GEN-LAST:event_visualizar_curtidasActionPerformed
                                      
     /**
      * @param args the command line arguments
@@ -273,5 +351,6 @@ public class PesquisarMusica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabela_pesquisa;
     private javax.swing.JTextField tf_pesquisa;
+    private javax.swing.JButton visualizar_curtidas;
     // End of variables declaration//GEN-END:variables
 }

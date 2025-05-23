@@ -27,7 +27,6 @@ public class Musicas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        bt_playlists = new javax.swing.JButton();
         bt_curtidas = new javax.swing.JButton();
         bt_pesquisar = new javax.swing.JButton();
 
@@ -36,11 +35,8 @@ public class Musicas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Musicas");
 
-        bt_playlists.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bt_playlists.setText("Suas Playlists");
-
         bt_curtidas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bt_curtidas.setText("Musicas Curtidas");
+        bt_curtidas.setText("Histórico");
         bt_curtidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_curtidasActionPerformed(evt);
@@ -60,16 +56,15 @@ public class Musicas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bt_pesquisar)
-                            .addComponent(bt_curtidas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_playlists, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bt_pesquisar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(145, 145, 145)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(114, 114, 114)
+                            .addComponent(bt_curtidas, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -77,27 +72,27 @@ public class Musicas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(bt_playlists)
-                .addGap(33, 33, 33)
+                .addGap(49, 49, 49)
                 .addComponent(bt_curtidas)
-                .addGap(28, 28, 28)
+                .addGap(38, 38, 38)
                 .addComponent(bt_pesquisar)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
      
-    private void bt_curtidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_curtidasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_curtidasActionPerformed
-
     private void bt_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_pesquisarActionPerformed
       PesquisarMusica c = new PesquisarMusica();
         c.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_pesquisarActionPerformed
+
+    private void bt_curtidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_curtidasActionPerformed
+        Historico c = new Historico();
+        c.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_curtidasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,7 +132,6 @@ public class Musicas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_curtidas;
     private javax.swing.JButton bt_pesquisar;
-    private javax.swing.JButton bt_playlists;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,4 @@
-
 package Model;
-
 
 public class ModelMusica {
     private String nome, artista, genero;
@@ -14,6 +12,13 @@ public class ModelMusica {
         this.artista = artista;
         this.genero = genero;
         this.curtida = false;
+    }
+
+    public ModelMusica(String nome, String artista, String genero, boolean curtida) {
+        this.nome = nome;
+        this.artista = artista;
+        this.genero = genero;
+        this.curtida = curtida;
     }
 
     public String getNome() {
@@ -39,14 +44,13 @@ public class ModelMusica {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    
-     public boolean isCurtida() {
+
+    public boolean isCurtida() {
         return curtida;
     }
 
     public void setCurtida(boolean curtida) {
         this.curtida = curtida;
     }
-    
 }
 
